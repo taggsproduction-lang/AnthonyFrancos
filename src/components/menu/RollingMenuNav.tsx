@@ -129,9 +129,9 @@ export default function RollingMenuNav() {
           ))}
         </div>
 
-        {/* Rolling food indicator */}
+        {/* Rolling food indicator — desktop only */}
         <div
-          className="pointer-events-none absolute -bottom-4 left-0 z-50 h-8 w-8"
+          className="pointer-events-none absolute -bottom-4 left-0 z-50 hidden h-8 w-8 md:block"
           style={{
             transform: `translateX(${indicatorX}px)`,
             transition: "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)",
