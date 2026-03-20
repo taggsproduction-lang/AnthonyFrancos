@@ -51,6 +51,35 @@ body {
   animation: food-fade-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
+/* Chef running animation — bouncy stride */
+@keyframes chef-run {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  15% {
+    transform: translateY(-3px) rotate(2deg);
+  }
+  30% {
+    transform: translateY(0);
+  }
+  45% {
+    transform: translateY(-3px) rotate(-2deg);
+  }
+  60% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-2px) rotate(1deg);
+  }
+  90% {
+    transform: translateY(0);
+  }
+}
+
+.animate-chef-run {
+  animation: chef-run 0.35s ease-in-out 2;
+}
+
 /* Hide scrollbar for menu nav */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
