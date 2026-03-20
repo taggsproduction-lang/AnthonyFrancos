@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const GBP_REVIEW_URL =
-  "https://search.google.com/local/writereview?placeid=ChIJOwg_06VPwokRYv534QaPC8g";
+  "https://www.google.com/search?q=anthony+francos+springfield+NJ&rlz=1C1HKFL_enUS1203US1203&sourceid=chrome&ie=UTF-8#lrd=0x89c3af38fe639867:0x34895cfd7b366541,3,,,";
 
 export default function ReviewFunnel() {
   const [rating, setRating] = useState(0);
