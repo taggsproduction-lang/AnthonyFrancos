@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
@@ -12,7 +12,6 @@ const navItems = [
   { href: "/contact", label: "Contact" },
 ];
 
-const FLIP_DURATION = 200; // ms for the chef to turn around
 const RUN_DURATION = 700; // ms for lateral movement
 
 export default function RollingFoodNav({
@@ -25,10 +24,7 @@ export default function RollingFoodNav({
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [x, setX] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [facingLeft, setFacingLeft] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
-  const [shouldMove, setShouldMove] = useState(true);
-  const xRef = useRef(0);
 
   // Find active index from pathname
   useEffect(() => {
@@ -42,8 +38,8 @@ export default function RollingFoodNav({
     }
   }, [pathname, activeIndex]);
 
-  // Two-step: 1) flip to face direction, 2) then run
-  const moveChef = useCallback(() => {
+  // Move chef to active nav item
+  useEffect(() => {
     const container = containerRef.current;
     const activeEl = itemRefs.current[activeIndex];
     if (!container || !activeEl) return;
@@ -53,30 +49,13 @@ export default function RollingFoodNav({
     const newX =
       activeRect.left - containerRect.left + activeRect.width / 2 - 16;
 
-    const needsFlip = (newX < xRef.current && !facingLeft) ||
-                      (newX > xRef.current && facingLeft);
-
-    if (newX !== xRef.current) {
-      // Step 1: Flip to face the direction he's about to run
-      const goingLeft = newX < xRef.current;
-      setFacingLeft(goingLeft);
-
-      // Step 2: After flip completes, start the lateral movement
-      const delay = needsFlip ? FLIP_DURATION : 0;
-      setTimeout(() => {
-        setShouldMove(true);
-        setX(newX);
-        xRef.current = newX;
-        setIsRunning(true);
-        setTimeout(() => setIsRunning(false), RUN_DURATION);
-      }, delay);
+    if (newX !== x) {
+      setX(newX);
+      setIsRunning(true);
+      setTimeout(() => setIsRunning(false), RUN_DURATION);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeIndex, facingLeft]);
-
-  useEffect(() => {
-    moveChef();
-  }, [moveChef]);
+  }, [activeIndex]);
 
   return (
     <div ref={containerRef} className="relative flex items-center gap-7">
@@ -85,17 +64,11 @@ export default function RollingFoodNav({
         className="pointer-events-none absolute -bottom-9 z-50"
         style={{
           transform: `translateX(${x}px)`,
-          transition: shouldMove
-            ? `transform ${RUN_DURATION}ms cubic-bezier(0.34, 1.56, 0.64, 1)`
-            : "none",
+          transition: `transform ${RUN_DURATION}ms cubic-bezier(0.34, 1.56, 0.64, 1)`,
         }}
       >
         <div
           className={`relative h-10 w-8 ${isRunning ? "animate-chef-run" : ""}`}
-          style={{
-            transform: facingLeft ? "scaleX(-1)" : "scaleX(1)",
-            transition: `transform ${FLIP_DURATION}ms ease`,
-          }}
         >
           <Image
             src="/images/chef-running.png"
