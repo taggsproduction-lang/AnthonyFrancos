@@ -2,8 +2,20 @@
 
 import { useState } from "react";
 
-const GBP_REVIEW_URL =
-  "https://www.google.com/search?q=anthony+francos+springfield+NJ&rlz=1C1HKFL_enUS1203US1203&sourceid=chrome&ie=UTF-8#lrd=0x89c3af38fe639867:0x34895cfd7b366541,3,,,";
+// Desktop: Google Search with review panel fragment
+const GBP_REVIEW_DESKTOP =
+  "https://www.google.com/search?q=anthony+francos+springfield+NJ#lrd=0x89c3af38fe639867:0x34895cfd7b366541,3,,,";
+
+// Mobile: Google Maps direct review prompt (works reliably on mobile browsers)
+const GBP_REVIEW_MOBILE =
+  "https://search.google.com/local/writereview?placeid=ChIJZ5hj_jivw4kRQWU2e_1ciTQ";
+
+function getReviewUrl() {
+  if (typeof window === "undefined") return GBP_REVIEW_DESKTOP;
+  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+    ? GBP_REVIEW_MOBILE
+    : GBP_REVIEW_DESKTOP;
+}
 
 export default function ReviewFunnel() {
   const [rating, setRating] = useState(0);
@@ -16,7 +28,7 @@ export default function ReviewFunnel() {
     setRating(star);
     if (star === 5) {
       // 5 stars → send to Google Business Profile
-      window.open(GBP_REVIEW_URL, "_blank", "noopener,noreferrer");
+      window.open(getReviewUrl(), "_blank", "noopener,noreferrer");
       setStep("thanks");
     } else {
       // < 5 stars → show feedback form

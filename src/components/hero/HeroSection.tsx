@@ -8,7 +8,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-brand-charcoal via-brand-charcoal/80 to-brand-charcoal" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(196,30,36,0.15)_0%,_transparent_70%)]" />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 pt-20 text-center md:pt-0">
         {/* Trust badge */}
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 px-4 py-1.5">
           <span className="text-brand-gold">&#9733; 4.5</span>
