@@ -22,7 +22,7 @@ export default function MenuPage() {
           </h1>
           <p className="mx-auto mt-3 max-w-xl text-brand-cream/60">
             New York-style pizza and authentic Italian dishes made fresh daily.
-            Hover any item to order it directly.
+            Hover over any item to order directly.
           </p>
           <div className="mt-6 flex items-center justify-center gap-4">
             <OrderButton size="md" />
@@ -34,8 +34,8 @@ export default function MenuPage() {
             </a>
           </div>
           <p className="mt-3 text-sm text-brand-gold">
-            Use code <span className="font-bold">{BUSINESS.promoCode}</span> for{" "}
-            {BUSINESS.promoDiscount} online orders
+            Use code <span className="font-bold">{BUSINESS.promoCode}</span> for
+            10% off online orders
           </p>
         </div>
       </section>

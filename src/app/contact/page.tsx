@@ -18,7 +18,7 @@ export default function ContactPage() {
             Visit Us
           </h1>
           <p className="mt-3 text-lg text-brand-cream/60">
-            Right on Route 22, center island next to Advanced Auto
+            On the center island of Route 22, next to Advanced Auto
           </p>
         </div>
       </section>

@@ -10,8 +10,8 @@ export default function CTABanner() {
         <p className="mt-3 text-lg text-white/80">
           Order online for pickup or delivery to{" "}
           {BUSINESS.deliveryAreas.slice(0, 3).join(", ")} and more.
-          Use code <span className="font-bold">{BUSINESS.promoCode}</span> for{" "}
-          {BUSINESS.promoDiscount} off.
+          Use code <span className="font-bold">{BUSINESS.promoCode}</span> for
+          10% off.
         </p>
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <a

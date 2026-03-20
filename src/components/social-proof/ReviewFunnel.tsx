@@ -209,7 +209,7 @@ export default function ReviewFunnel() {
                 }}
                 className="mt-6 text-sm font-semibold text-brand-red transition hover:text-brand-red-dark"
               >
-                Leave another review
+                Rate again
               </button>
             </>
           )}

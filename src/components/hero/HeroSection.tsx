@@ -22,9 +22,9 @@ export default function HeroSection() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg text-brand-cream/70 md:text-xl">
-          New York-style pies made fresh daily with mozzarella from Wisconsin&apos;s
-          finest dairies and pasta from Brooklyn&apos;s oldest pasta houses.
-          Serving Springfield &amp; surrounding areas.
+          New York-style pies made fresh daily with mozzarella from
+          Wisconsin&apos;s finest dairies and pasta from Brooklyn&apos;s
+          oldest pasta houses. Serving Springfield and surrounding areas.
         </p>
 
         {/* CTAs */}
@@ -47,34 +47,21 @@ export default function HeroSection() {
 
         {/* Promo */}
         <p className="mt-6 text-sm text-brand-gold">
-          Use code <span className="font-bold">{BUSINESS.promoCode}</span> for{" "}
-          {BUSINESS.promoDiscount} your first online order
+          Use code <span className="font-bold">{BUSINESS.promoCode}</span> for
+          10% off your first online order
         </p>
 
-        {/* Delivery badge */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-brand-cream/50">
-          <span className="flex items-center gap-2">
+        {/* Delivery info — single clean line */}
+        <p className="mt-8 text-sm text-brand-cream/50">
+          <span className="inline-flex items-center gap-2">
             <span className="inline-block h-2 w-2 rounded-full bg-brand-green animate-pulse" />
-            Open Now — Until 10pm
+            Open now until 10pm
           </span>
-          <span>|</span>
-          <span>Delivery &bull; Takeout &bull; Dine-In</span>
-          <span>|</span>
+          <span className="mx-3">·</span>
+          <span>Delivery, takeout, and dine-in</span>
+          <span className="mx-3">·</span>
           <span className="text-brand-gold/70">Our drivers, not third-party</span>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <svg
-          className="h-6 w-6 text-brand-cream/30"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
+        </p>
       </div>
     </section>
   );

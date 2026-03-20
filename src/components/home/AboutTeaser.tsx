@@ -22,7 +22,7 @@ export default function AboutTeaser() {
               Bronx.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-brand-cream/70">
-              With several locations across Northern NJ, our buying power means
+              With 8 locations across Northern NJ, our buying power means
               you get restaurant-quality ingredients at neighborhood prices.
             </p>
             <Link
