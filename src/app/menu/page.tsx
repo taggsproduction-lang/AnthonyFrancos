@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { menuCategories } from "@/lib/menu-data";
-import MenuNav from "@/components/menu/MenuNav";
+import RollingMenuNav from "@/components/menu/RollingMenuNav";
 import MenuCategory from "@/components/menu/MenuCategory";
 import OrderButton from "@/components/cta/OrderButton";
 import { BUSINESS } from "@/lib/constants";
@@ -42,7 +42,7 @@ export default function MenuPage() {
 
       {/* Menu content */}
       <div className="mx-auto max-w-7xl px-4 py-8">
-        <MenuNav />
+        <RollingMenuNav />
 
         <div className="mt-8 space-y-16">
           {menuCategories.map((category) => (

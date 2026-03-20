@@ -3,10 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { BUSINESS } from "@/lib/constants";
+import RollingFoodNav from "./RollingFoodNav";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50">
@@ -31,28 +34,14 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden items-center gap-7 md:flex">
-          {[
-            { href: "/", label: "Home" },
-            { href: "/menu", label: "Menu" },
-            { href: "/catering", label: "Catering" },
-            { href: "/about", label: "About" },
-            { href: "/contact", label: "Contact" },
-          ].map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-semibold text-brand-charcoal/70 transition hover:text-brand-red"
-            >
-              {link.label}
-            </Link>
-          ))}
+        {/* Desktop nav with rolling food indicator */}
+        <div className="hidden items-center gap-6 md:flex">
+          <RollingFoodNav onNavigate={(href) => router.push(href)} />
           <a
             href={BUSINESS.orderUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-brand-red px-6 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-brand-red-dark hover:shadow-md"
+            className="ml-2 rounded-full bg-brand-red px-6 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-brand-red-dark hover:shadow-md"
           >
             Order Online
           </a>
@@ -81,18 +70,27 @@ export default function Navbar() {
         <div className="relative border-t border-brand-gold/20 bg-brand-cream md:hidden">
           <div className="flex flex-col gap-1 px-4 py-4">
             {[
-              { href: "/", label: "Home" },
-              { href: "/menu", label: "Menu" },
-              { href: "/catering", label: "Catering" },
-              { href: "/about", label: "About" },
-              { href: "/contact", label: "Contact" },
+              { href: "/", label: "Home", icon: "/images/nav-pizza.png" },
+              { href: "/menu", label: "Menu", icon: "/images/nav-pasta.png" },
+              { href: "/catering", label: "Catering", icon: "/images/nav-chicken.png" },
+              { href: "/about", label: "About", icon: "/images/nav-calzone.png" },
+              { href: "/contact", label: "Contact", icon: "/images/nav-appetizer.png" },
             ].map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-brand-charcoal/80 transition hover:bg-brand-red/5 hover:text-brand-red"
+                className="flex items-center gap-3 rounded-lg px-3 py-3 text-brand-charcoal/80 transition hover:bg-brand-red/5 hover:text-brand-red"
               >
+                <div className="h-8 w-8 overflow-hidden rounded-full shadow-sm ring-1 ring-brand-charcoal/10">
+                  <Image
+                    src={link.icon}
+                    alt=""
+                    width={32}
+                    height={32}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
                 {link.label}
               </Link>
             ))}
