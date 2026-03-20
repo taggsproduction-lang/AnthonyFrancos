@@ -65,7 +65,7 @@ const cateringCategories = [
 
 export default function CateringPage() {
   return (
-    <div className="pt-20">
+    <div className="pt-24">
       {/* Hero */}
       <section className="bg-brand-charcoal py-20">
         <div className="mx-auto max-w-7xl px-4 text-center">

@@ -5,7 +5,7 @@ export function getRestaurantSchema() {
     "@context": "https://schema.org",
     "@type": "Restaurant",
     name: BUSINESS.fullName,
-    image: "/images/af-logo-primary.png",
+    image: "/images/af-logo-cropped.png",
     telephone: BUSINESS.phone,
     address: {
       "@type": "PostalAddress",

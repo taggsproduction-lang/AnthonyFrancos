@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function MenuPage() {
   return (
-    <div className="pt-20">
+    <div className="pt-24">
       {/* Menu hero */}
       <section className="bg-brand-charcoal py-16">
         <div className="mx-auto max-w-7xl px-4 text-center">
