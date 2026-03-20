@@ -1,6 +1,5 @@
 "use client";
 
-import { BUSINESS } from "@/lib/constants";
 import type { MenuCategory as MenuCategoryType } from "@/lib/menu-data";
 
 export default function MenuCategory({
@@ -71,7 +70,7 @@ export default function MenuCategory({
 
             {/* Order overlay on hover */}
             <a
-              href={BUSINESS.orderUrl}
+              href={item.orderUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="absolute inset-0 flex items-center justify-center rounded-2xl bg-brand-red/90 opacity-0 transition-opacity group-hover:opacity-100"

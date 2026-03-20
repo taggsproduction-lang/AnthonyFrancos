@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { BUSINESS } from "@/lib/constants";
 
 const featured = [
   {
@@ -9,6 +8,7 @@ const featured = [
     price: "$23.35",
     tag: "Fan Favorite",
     image: "/images/food-margherita.png",
+    orderUrl: "https://afpizza.weborder.net/Item/New/3206",
   },
   {
     name: "Chicken Parmigiana",
@@ -16,6 +16,7 @@ const featured = [
     price: "$19.15",
     tag: "Best Seller",
     image: "/images/food-chicken-parm.png",
+    orderUrl: "https://afpizza.weborder.net/Item/New/3007",
   },
   {
     name: "Lobster Ravioli",
@@ -23,6 +24,7 @@ const featured = [
     price: "$19.00",
     tag: "Chef's Pick",
     image: "/images/food-lobster-ravioli.png",
+    orderUrl: "https://afpizza.weborder.net/Item/New/2983",
   },
   {
     name: "Grandma Pie",
@@ -30,6 +32,7 @@ const featured = [
     price: "$23.25",
     tag: "Must Try",
     image: "/images/food-grandma-pie.png",
+    orderUrl: "https://afpizza.weborder.net/Item/New/3334",
   },
   {
     name: "Seafood Marechiara",
@@ -37,6 +40,7 @@ const featured = [
     price: "$25.45",
     tag: "Premium",
     image: "/images/food-seafood-marechiara.png",
+    orderUrl: "https://afpizza.weborder.net/Item/New/3043",
   },
   {
     name: "Baked Ziti",
@@ -44,6 +48,7 @@ const featured = [
     price: "$16.45",
     tag: "Comfort Food",
     image: "/images/food-baked-ziti.png",
+    orderUrl: "https://afpizza.weborder.net/Item/New/2985",
   },
 ];
 
@@ -68,7 +73,7 @@ export default function FeaturedItems() {
           {featured.map((item) => (
             <a
               key={item.name}
-              href={BUSINESS.orderUrl}
+              href={item.orderUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="group overflow-hidden rounded-2xl border border-brand-charcoal/10 bg-white transition hover:border-brand-red/30 hover:shadow-lg"
