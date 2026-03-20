@@ -1,6 +1,7 @@
 import HeroSection from "@/components/hero/HeroSection";
 import FeaturedItems from "@/components/home/FeaturedItems";
 import ReviewCarousel from "@/components/social-proof/ReviewCarousel";
+import ReviewFunnel from "@/components/social-proof/ReviewFunnel";
 import AboutTeaser from "@/components/home/AboutTeaser";
 import CTABanner from "@/components/home/CTABanner";
 
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection />
       <FeaturedItems />
       <ReviewCarousel />
+      <ReviewFunnel />
       <AboutTeaser />
       <CTABanner />
     </>

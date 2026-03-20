@@ -4,12 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
+const PIZZA_ICON = "/images/nav-pizza.png";
+
 const navItems = [
-  { href: "/", label: "Home", icon: "/images/nav-pizza.png" },
-  { href: "/menu", label: "Menu", icon: "/images/nav-pasta.png" },
-  { href: "/catering", label: "Catering", icon: "/images/nav-chicken.png" },
-  { href: "/about", label: "About", icon: "/images/nav-calzone.png" },
-  { href: "/contact", label: "Contact", icon: "/images/nav-appetizer.png" },
+  { href: "/", label: "Home" },
+  { href: "/menu", label: "Menu" },
+  { href: "/catering", label: "Catering" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function RollingFoodNav({
@@ -22,8 +24,6 @@ export default function RollingFoodNav({
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [indicatorStyle, setIndicatorStyle] = useState({ x: 0, rotation: 0 });
   const [activeIndex, setActiveIndex] = useState(0);
-  const [prevIndex, setPrevIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Find active index from pathname
   useEffect(() => {
@@ -33,10 +33,7 @@ export default function RollingFoodNav({
         : pathname.startsWith(item.href)
     );
     if (idx !== -1 && idx !== activeIndex) {
-      setPrevIndex(activeIndex);
       setActiveIndex(idx);
-      setIsTransitioning(true);
-      setTimeout(() => setIsTransitioning(false), 600);
     }
   }, [pathname, activeIndex]);
 
@@ -52,7 +49,7 @@ export default function RollingFoodNav({
 
     // Rotation proportional to distance (simulate rolling)
     const distance = x - indicatorStyle.x;
-    const circumference = Math.PI * 36; // diameter 36px
+    const circumference = Math.PI * 36;
     const rotations = (distance / circumference) * 360;
 
     setIndicatorStyle({
@@ -62,12 +59,9 @@ export default function RollingFoodNav({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeIndex]);
 
-  const currentIcon = navItems[activeIndex]?.icon;
-  const prevIcon = navItems[prevIndex]?.icon;
-
   return (
     <div ref={containerRef} className="relative flex items-center gap-7">
-      {/* Rolling food indicator */}
+      {/* Rolling pizza indicator — always pizza */}
       <div
         className="pointer-events-none absolute -bottom-8 z-50 h-9 w-9"
         style={{
@@ -82,29 +76,14 @@ export default function RollingFoodNav({
             transition: "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)",
           }}
         >
-          {/* Crossfade between food icons */}
-          <div className="relative h-full w-full">
-            <Image
-              src={prevIcon}
-              alt=""
-              fill
-              sizes="36px"
-              className={`object-cover transition-opacity duration-300 ${
-                isTransitioning ? "opacity-0" : "opacity-0"
-              }`}
-              aria-hidden
-            />
-            <Image
-              src={currentIcon}
-              alt=""
-              fill
-              sizes="36px"
-              className={`object-cover transition-opacity duration-500 ${
-                isTransitioning ? "animate-food-fade-in" : "opacity-100"
-              }`}
-              aria-hidden
-            />
-          </div>
+          <Image
+            src={PIZZA_ICON}
+            alt=""
+            fill
+            sizes="36px"
+            className="object-cover"
+            aria-hidden
+          />
         </div>
       </div>
 

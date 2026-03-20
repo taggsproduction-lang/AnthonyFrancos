@@ -70,27 +70,18 @@ export default function Navbar() {
         <div className="relative border-t border-brand-gold/20 bg-brand-cream md:hidden">
           <div className="flex flex-col gap-1 px-4 py-4">
             {[
-              { href: "/", label: "Home", icon: "/images/nav-pizza.png" },
-              { href: "/menu", label: "Menu", icon: "/images/nav-pasta.png" },
-              { href: "/catering", label: "Catering", icon: "/images/nav-chicken.png" },
-              { href: "/about", label: "About", icon: "/images/nav-calzone.png" },
-              { href: "/contact", label: "Contact", icon: "/images/nav-appetizer.png" },
+              { href: "/", label: "Home" },
+              { href: "/menu", label: "Menu" },
+              { href: "/catering", label: "Catering" },
+              { href: "/about", label: "About" },
+              { href: "/contact", label: "Contact" },
             ].map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-3 rounded-lg px-3 py-3 text-brand-charcoal/80 transition hover:bg-brand-red/5 hover:text-brand-red"
+                className="rounded-lg px-3 py-3 text-brand-charcoal/80 transition hover:bg-brand-red/5 hover:text-brand-red"
               >
-                <div className="h-8 w-8 overflow-hidden rounded-full shadow-sm ring-1 ring-brand-charcoal/10">
-                  <Image
-                    src={link.icon}
-                    alt=""
-                    width={32}
-                    height={32}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
                 {link.label}
               </Link>
             ))}
